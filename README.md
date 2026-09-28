@@ -1,16 +1,40 @@
-# React + Vite
+# VRA Connect — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Real-time hierarchical triage, hospital-matching, and adaptive-routing framework for connected ambulance dispatch. This is the React client for VRA Connect.
 
-Currently, two official plugins are available:
+## Tech Stack
+- React (Vite)
+- Socket.io-client (real-time vitals/status updates)
+- Leaflet (live map rendering and routing)
+- Browser-native Speech-to-Text / Text-to-Speech APIs (voice call-intake)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
+- **Ambulance Dashboard** — live vitals, current severity tier, matched hospital, route/ETA
+- **Hospital Dashboard** — incoming case details, live vitals feed, readiness status
+- **Patient / Vitals Dashboard** — real-time vitals monitoring view
+- **Dispatcher View** — voice-based call-intake agent for emergency call handling
+- **Case Generator** — internal tool to generate randomized test cases
+- **Reroute Simulator** — internal tool to test the adaptive reroute engine
+- **Login / Register** — role-based authentication (ambulance / hospital)
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the Oxlint configuration
+App runs by default at `http://localhost:5173`.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Environment
+Make sure the backend server (see [vra-connect-backend](https://github.com/samanvitha212-ship-it/vra-connect-backend)) is running, and update the API/socket base URL in `src/socket.js` if needed.
+
+## Project Structure
+```
+src/
+  components/   → reusable UI components
+  hooks/        → custom React hooks (vitals simulator, live traffic, speech, etc.)
+  pages/        → route-level pages (dashboards, login, register, etc.)
+  utils/        → triage logic, call-extraction helpers
+  data/         → mock/generated case data
+```
